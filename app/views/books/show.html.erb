@@ -1,0 +1,10 @@
+<!-- app/views/books/show.html.erb -->
+<h1><%= @book.title %></h1>
+<p><strong>Author:</strong> <%= @book.author %></p>
+<p><strong>Published Date:</strong> <%= @book.published_date %></p>
+<p><strong>ISBN:</strong> <%= @book.isbn %></p>
+<% if @book.cover_url %>
+  <p><img src="<%= @book.cover_url %>" alt="<%= @book.title %> cover"></p>
+<% end %>
+<p><strong>Category:</strong> <%= @book.category.name %></p>
+
