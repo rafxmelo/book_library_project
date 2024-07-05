@@ -8,6 +8,10 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = Book.where('title LIKE ?', "%#{params[:query]}%")
+    @books = if params[:category_id].present?
+               Book.where('title LIKE ? AND category_id = ?', "%#{params[:query]}%", params[:category_id])
+             else
+               Book.where('title LIKE ?', "%#{params[:query]}%")
+             end
   end
 end
