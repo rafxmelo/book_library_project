@@ -3,18 +3,24 @@
   <head>
     <title>BookLibrary</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-
-  <body>
-    <nav>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+       <nav>
       <%= link_to 'Home', root_path %>
       <%= link_to 'About', about_path %>
       <%= link_to 'Books', books_path %>
     </nav>
     <%= yield %>
-  </body>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

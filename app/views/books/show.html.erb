@@ -3,8 +3,10 @@
 <p><strong>Author:</strong> <%= @book.author %></p>
 <p><strong>Published Date:</strong> <%= @book.published_date %></p>
 <p><strong>ISBN:</strong> <%= @book.isbn %></p>
-<% if @book.cover_url %>
+<% if @book.cover_url.present? %>
   <p><img src="<%= @book.cover_url %>" alt="<%= @book.title %> cover"></p>
+<% else %>
+  <p>No cover image available</p>
 <% end %>
 <p><strong>Category:</strong> <%= @book.category.name %></p>
 

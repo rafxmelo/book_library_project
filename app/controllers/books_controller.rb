@@ -12,6 +12,7 @@ class BooksController < ApplicationController
                Book.where('title LIKE ? AND category_id = ?', "%#{params[:query]}%", params[:category_id])
              else
                Book.where('title LIKE ?', "%#{params[:query]}%")
-             end
+             end.page(params[:page])
+    render :index
   end
 end
