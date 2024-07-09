@@ -1,4 +1,4 @@
-<h1>Books</h1>
+<h1>Books Page</h1>
 <%= form_with url: search_path, method: :get do %>
   <%= text_field_tag :query %>
   <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name), include_blank: 'All Categories' %>
