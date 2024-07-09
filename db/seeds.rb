@@ -19,7 +19,9 @@ isbns.each do |isbn|
     published_date: book_data['publish_date'],
     isbn: isbn,
     cover_url: book_data.dig('cover', 'large'),
-    category: categories.sample
+    category: categories.sample,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude
   )
 end
 
@@ -30,6 +32,8 @@ end
     published_date: Faker::Date.between(from: '1900-01-01', to: Date.today),
     isbn: Faker::Number.unique.number(digits: 10).to_s,
     cover_url: 'https://via.placeholder.com/150',
-    category: categories.sample
+    category: categories.sample,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude
   )
 end

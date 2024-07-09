@@ -1,4 +1,3 @@
-<!-- app/views/books/show.html.erb -->
 <h1><%= @book.title %></h1>
 <p><strong>Author:</strong> <%= @book.author %></p>
 <p><strong>Published Date:</strong> <%= @book.published_date %></p>
@@ -9,4 +8,21 @@
   <p>No cover image available</p>
 <% end %>
 <p><strong>Category:</strong> <%= @book.category.name %></p>
-
+<p><strong>Latitude:</strong> <%= @book.latitude %>, <strong>Longitude:</strong> <%= @book.longitude %></p>
+<% if @book.latitude.present? && @book.longitude.present? %>
+  <div id="map" style="height: 400px; width: 100%;"></div>
+  <script>
+    function initMap() {
+      var location = { lat: <%= @book.latitude %>, lng: <%= @book.longitude %> };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: location
+      });
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPLmP_VDPGCuFSk13XVqCq4qG_4NBQz-g&callback=initMap" async defer></script>
+<% end %>
