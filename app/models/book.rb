@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
   belongs_to :category
-  validates :title, :author, :isbn, presence: true
+  belongs_to :author
+  validates :title, :isbn, presence: true
 end
