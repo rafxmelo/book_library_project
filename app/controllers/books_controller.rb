@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.page(params[:page])
+    if params[:home].present?
+      render 'home'
+    else
+      @books = Book.page(params[:page])
+    end
   end
 
   def show

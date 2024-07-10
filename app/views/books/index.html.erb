@@ -1,12 +1,25 @@
-<h1>Books Page</h1>
-<%= form_with url: search_path, method: :get do %>
-  <%= text_field_tag :query %>
-  <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name), include_blank: 'All Categories' %>
-  <%= submit_tag 'Search' %>
+<h1 class="mb-4">Books</h1>
+<%= form_with url: search_path, method: :get, class: "form-inline mb-4" do %>
+  <div class="form-group mr-2">
+    <%= text_field_tag :query, nil, class: "form-control", placeholder: "Search books..." %>
+  </div>
+  <div class="form-group mr-2">
+    <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, { include_blank: 'All Categories' }), class: "form-control" %>
+  </div>
+  <%= submit_tag 'Search', class: "btn btn-primary" %>
 <% end %>
-<ul>
+
+<div class="row">
   <% @books.each do |book| %>
-    <li><%= link_to book.title, book_path(book) %></li>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to book.title, book_path(book) %></h5>
+          <p class="card-text">Author: <%= book.author&.name || "Unknown" %></p>
+          <p class="card-text">Category: <%= book.category&.name || "Unknown" %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 <%= paginate @books %>
