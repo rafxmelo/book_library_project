@@ -1,13 +1,13 @@
 <h1><%= @book.title %></h1>
-<p><strong>Author:</strong> <%= @book.author %></p>
-<p><strong>Published Date:</strong> <%= @book.published_date %></p>
+<p><strong>Author:</strong> <%= @book.author&.name || "Unknown" %></p>
+<p><strong>Published Date:</strong> <%= @book.published_date || "Unknown" %></p>
 <p><strong>ISBN:</strong> <%= @book.isbn %></p>
 <% if @book.cover_url.present? %>
   <p><img src="<%= @book.cover_url %>" alt="<%= @book.title %> cover"></p>
 <% else %>
   <p>No cover image available</p>
 <% end %>
-<p><strong>Category:</strong> <%= @book.category.name %></p>
+<p><strong>Category:</strong> <%= @book.category&.name || "Unknown" %></p>
 <p><strong>Latitude:</strong> <%= @book.latitude %>, <strong>Longitude:</strong> <%= @book.longitude %></p>
 <% if @book.latitude.present? && @book.longitude.present? %>
   <div id="map" style="height: 400px; width: 100%;"></div>
